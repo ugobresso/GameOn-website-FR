@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const content = document.querySelectorAll(".content");
 
 const modalCloseBtn = document.querySelectorAll(".close");
 
@@ -34,15 +35,44 @@ function closeModal() {
 
 // submit validation event
 form.addEventListener("submit", (event) => {
-  const isValid = validate();
+  const isFormValid = validate();
 
-  if (isValid) {
-    return true;
+  if (!isFormValid) {
+    event.preventDefault();
   } else {
     event.preventDefault();
-    return false;
+    adjustModal(isFormValid);
   }
 });
+
+// Function to adjust the modal after successful validation
+function adjustModal(isValid) {
+  if (isValid) {
+    form.style.display = "none";
+    
+    // Show a confirmation message
+    const confirmationMessage = document.createElement("div");
+    confirmationMessage.textContent = "Merci pour votre inscription.";
+
+    confirmationMessage.style.height = "70vh";
+    confirmationMessage.style.display = "flex";
+    confirmationMessage.style.alignItems = "center";
+    confirmationMessage.style.justifyContent = "center";
+
+    form.parentNode.appendChild(confirmationMessage);
+
+    // Red (modal-btn) button to close the form at the end
+    const closingBtn = document.createElement("button");
+    closingBtn.textContent = "Fermer";
+
+    closingBtn.classList.add("btn-submit");
+
+    form.parentNode.appendChild(closingBtn);
+
+    closingBtn.addEventListener("click", closeModal);
+
+  }
+}
 
 // submit validation form
 
