@@ -39,11 +39,17 @@ form.addEventListener("submit", (event) => {
 
   if (!isFormValid) {
     event.preventDefault();
+    adjustModalWrong(isFormValid);
   } else {
     event.preventDefault();
     adjustModal(isFormValid);
   }
 });
+
+// function to adjust the modal if unsuccessful validation
+function adjustModalWrong(isValid) {
+  modalbg.style.paddingTop = "70px";
+}
 
 // Function to adjust the modal after successful validation
 function adjustModal(isValid) {
@@ -58,6 +64,8 @@ function adjustModal(isValid) {
     confirmationMessage.style.display = "flex";
     confirmationMessage.style.alignItems = "center";
     confirmationMessage.style.justifyContent = "center";
+
+    modalbg.style.marginTop = "0px";
 
     form.parentNode.appendChild(confirmationMessage);
 
