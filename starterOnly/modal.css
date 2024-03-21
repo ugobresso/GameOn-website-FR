@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
 }
+
 /* Landing Page */
 
 body {
@@ -165,12 +166,14 @@ main {
 .bground {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   left: 0;
   top: 0;
+  padding-top: 90px;
   height: 100%;
   width: 100%;
   overflow: auto;
+  overflow-y: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
 
@@ -181,12 +184,14 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 500px;
+  padding-bottom: 40px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 20px;
   overflow: hidden;
   color: #fff;
+  overflow-y: auto;
 }
 
 .modal-body {
@@ -503,7 +508,7 @@ footer {
     position: relative;
     max-height: 100vh;
     margin-top: 35px;
-    z-index: 10000;
+    z-index: 1;
   }
 
   main {

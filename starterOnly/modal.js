@@ -9,9 +9,9 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const content = document.querySelectorAll(".content");
+const modalBtn = Array.from(document.getElementsByClassName("modal-btn"));
+// const formData = document.getElementsByClassName("formData");
+// const content = document.getElementsByClassName("content");
 
 const modalCloseBtn = document.querySelectorAll(".close");
 
@@ -45,11 +45,6 @@ form.addEventListener("submit", (event) => {
     adjustModal(isFormValid);
   }
 });
-
-// function to adjust the modal if unsuccessful validation
-function adjustModalWrong(isValid) {
-  modalbg.style.paddingTop = "70px";
-}
 
 // Function to adjust the modal after successful validation
 function adjustModal(isValid) {
@@ -169,6 +164,7 @@ function validate () {
   // verify if quantity is a number
   const quantityInput = document.getElementById("quantity");
   const quantityValue = parseInt(quantityInput.value, 10);
+  // const quantityValue = Number(quantityInput.value);
 
   const quantityError = document.getElementById("quantity-error");
 
